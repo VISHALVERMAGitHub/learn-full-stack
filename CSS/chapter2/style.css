@@ -1,0 +1,141 @@
+h1 {
+    color: rgb(168, 16, 16);
+
+}
+
+#signup {
+    color: rgb(255, 255, 255);
+    background-color: rgb(168, 16, 16);
+}
+
+#login {}
+
+h3 {
+    color: rgb(81, 2, 2);
+}
+
+.upvote {
+    background: green;
+    color: #fff;
+}
+
+#myID p {
+    color: green;
+    background-color: rgb(161, 9, 9);
+}
+
+/* decedent selector */
+p a {
+    color: rgb(148, 8, 15);
+    /* background-color: rgba(3, 6, 68, 0.976); */
+}
+
+/* sibiling combinator */
+p+h3 {
+    text-decoration-line: underline;
+}
+
+.upvote+button {
+    background: rgb(45, 84, 180);
+    color: #fff;
+}
+
+
+/* child parent combinator */
+div>input {
+    background-color: rgb(94, 154, 181);
+
+}
+
+
+/* attribute selector */
+input[type="text"] {
+    color: chocolate;
+}
+
+input[type="password"] {
+    color: crimson;
+}
+
+
+/* ?. precedence: id>class>element */
+h3 {
+    color: rgb(12, 5, 146);
+}
+
+#gim {
+    color: yellow;
+}
+
+.mig {
+    color: brown;
+}
+
+
+/* ?. */
+/* div p {
+    background-color: black;
+} */
+
+.bg_color {
+    background-color: blue;
+}
+
+
+/* this is print all paragraph green */
+/* p{
+    background-color: green;
+} */
+
+/* line 92 ?.   */
+
+div .greet {
+    color: red;
+}
+
+.greetdiv p .greet {
+    color: red;
+}
+
+.greetdiv .greet {
+    color: blue;
+}
+
+
+/*D6 13 PSEUDO CLASS */ 
+      /* :hover */
+button:hover{
+    background-color: black;
+    color: white;
+}
+h3:hover{
+    text-decoration: none;
+}
+
+        /* active */
+button:active{
+    color: darkslateblue;
+    background-color: red;
+}
+/* **** */
+input[type="radio"]:checked+label{
+    color: red;
+    font-weight: bold;
+}
+      
+
+    /* nth _of_type */
+/* .Pseudo:nth-of-type(2n){
+    background-color: burlywood;
+} */
+
+/* d14 pseudo element */
+    #good::first-letter{
+        color: aqua;
+    }
+    #good::first-line{
+        color:red;
+    }
+    h2::selection{
+       background-color: red;
+    }
