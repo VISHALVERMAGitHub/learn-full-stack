@@ -31,7 +31,9 @@ const customerSchema = new mongoose.Schema({
   
 // customer model
 const Customer =mongoose.model("customer",customerSchema);
-const addcustomer = async ()=>{
+
+
+// const addcustomer = async ()=>{
     // let cust1 = new Customer({
     //     name:"neha sharma",
     // })
@@ -43,12 +45,19 @@ const addcustomer = async ()=>{
     // let res =await cust1.save();
     // console.log(res);  
     
-    let res = await Customer.find();
-    console.log(res);
+    // let res = await Customer.find();
+    // console.log(res);
+    
+// }
+// addcustomer();
+
+
+const findcustomer = async ()=>{
+  let res = await Customer.find().populate("orders");// orders ka full information 
+  console.log(res[0]);
 }
-addcustomer();
 
-
+findcustomer();
 
 // const addOrder = async ()=>{
 //     let res = await Order.insertMany([
