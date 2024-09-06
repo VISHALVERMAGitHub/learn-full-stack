@@ -1,5 +1,6 @@
 const express =require("express");
 
+
 const app= express();
 const users=require("./routes/user.js")
 const posts=require("./routes/post.js")
@@ -27,22 +28,55 @@ const session = require('express-session');
 // })
 
 //04 storing  & using  session store info
+// const sessionOption={secret:"mysupersecretstring",resave:false,saveUninitialized:true,};
+// app.use(session(sessionOption));
+
+// app.get("/register",(req,res)=>{
+//     let {name = "anomynous"}=req.query;
+//     // console.log(req.session);
+//     req.session.name=name;  //req.session.name is variable which is store name  we can use any where.
+//     // console.log(req.session.name);
+    
+//     // res.send(name);
+//     res.redirect("/hello")
+// })
+
+
+// app.get("/hello",(req,res)=>{
+//     res.send(`Hello ${req.session.name}`); //here use "req.session.name" is variable
+// })
+
+//05 connect-flash
+const path=require("path");
+const flash =require("connect-flash");
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"/views"));
+
+
 const sessionOption={secret:"mysupersecretstring",resave:false,saveUninitialized:true,};
 app.use(session(sessionOption));
+app.use(flash())
 
 app.get("/register",(req,res)=>{
     let {name = "anomynous"}=req.query;
-    // console.log(req.session);
-    req.session.name=name;  //req.session.name is variable which is store name  we can use any where.
-    // console.log(req.session.name);
     
-    // res.send(name);
+    req.session.name=name;  //req.session.name is variable which is store name  we can use any where.
+    req.flash("success","user is registered");
+    
+    
     res.redirect("/hello")
 })
 
+
 app.get("/hello",(req,res)=>{
-    res.send(`Hello ${req.session.name}`); //here use "req.session.name" is variable
+
+    // console.log(req.flash("success"));
+    // res.send(`Hello ${req.session.name}`); 
+    res.render("page.ejs",{name:req.session.name,msg:req.flash("success")});
+
 })
+
+
 
 app.listen(3000,()=>{
     console.log(`server listen on port 3000`)
